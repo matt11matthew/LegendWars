@@ -1,0 +1,66 @@
+{
+  "mysql": {
+    "host": "149.56.29.126",
+    "port": 3306,
+    "databaseName": "legendwars",
+    "username": "root",
+    "password": "KakYx4icR9qU"
+  },
+  "message": {
+    "tempban": {
+      "defaultReason": "&cYou have been temp banned for %time%",
+      "loginMessage": "&bYou're TEMP banned from &aLegendWars%nl%&bTime:&a %time%%nl%&c%reason%",
+      "broadcast": {
+        "enable": false,
+        "message": "&c%banner% has banned &b%player%"
+      },
+      "tellstaff": {
+        "enable": false,
+        "message": "&c%banner% has banned &b%player% from %server%"
+      }
+    },
+    "ban": {
+      "defaultReason": "&cYou have been banned",
+      "loginMessage": "&bYou're PERMANITLY banned from &aLegendWars%nl%%reason%",
+      "broadcast": {
+        "enable": false,
+        "message": "&c%banner% has banned &b%player%"
+      },
+      "tellstaff": {
+        "enable": false,
+        "message": "&c%banner% has banned &b%player% from %server%"
+      }
+    },
+    "kick": {
+      "defaultReaon": "&cYou have been kicked",
+      "kickMessage": "&bKICKED from %server%%nl%%reason%",
+      "broadcast": {
+        "enable": false,
+        "message": "&c%kicker% has kicked &b%player%"
+      },
+      "tellstaff": {
+        "enable": false,
+        "message": "&c%kicker% has kicked &b%player% from %server%"
+      }
+    },
+    "unban": {
+      "defaultReaon": "&cYou have been unbanned",
+      "broadcast": {
+        "enable": false,
+        "message": "&c%unbanner% has unbanned %player%"
+      },
+      "tellstaff": {
+        "enable": false,
+        "message": "&c%unbanner% has unbanned %player%"
+      }
+    }
+  },
+  "permissions": {
+    "ban": [
+      "legendwars.permban",
+      "legendwars.tempban",
+      "legendwars.kick",
+      "legendwars.unban"
+    ]
+  }
+}
