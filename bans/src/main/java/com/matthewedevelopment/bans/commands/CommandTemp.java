@@ -14,8 +14,8 @@ import net.md_5.bungee.api.plugin.Command;
 /**
  * Created by Matthew E on 10/3/2016 at 5:53 PM.
  */
-public class CommandBan extends Command {
-    public CommandBan(String name) {
+public class CommandTemp extends Command {
+    public CommandTemp(String name) {
         super(name);
     }
 
@@ -27,26 +27,37 @@ public class CommandBan extends Command {
                 return;
             }
         }
-        if (args.length == 1) {
+        if (args.length == 2) {
             String name = args[0];
+            String rawTime = args[1];
+            if (!Utils.canParseTime(rawTime)) {
+                sender.sendMessage(Utils.colorCodes("&c/tempban <name> <time/1d1m2h>"));
+                return;
+            }
+            long time = Utils.getMillis(rawTime);
             try {
-                LegendWarsBanAPI.ban(name, null, sender.getName());
+                LegendWarsBanAPI.tempban(name, null, sender.getName(), time);
             } catch (CannotFindUUIDException e) {
                 sender.sendMessage(Utils.colorCodes("&cCouldn't fetch the uuid of " + name + " please wait 1 minute"));
                 return;
             }
             sender.sendMessage(Utils.colorCodes("&aYou have banned " + name));
             return;
-        }
-        if (args.length > 1) {
+        } else if (args.length > 2) {
             String name = args[0];
+            String rawTime = args[1];
             StringBuilder sb = new StringBuilder();
-            for (int i = 1; i < args.length; i++) {
+            for (int i = 2; i < args.length; i++) {
                 sb.append(args[i] + " ");
             }
+            if (!Utils.canParseTime(rawTime)) {
+                sender.sendMessage(Utils.colorCodes("&c/tempban <name> <time/1d1m2h> <reason>"));
+                return;
+            }
+            long time = Utils.getMillis(rawTime);
             String reason = sb.toString();
             try {
-                LegendWarsBanAPI.ban(name, reason, sender.getName());
+                LegendWarsBanAPI.tempban(name, reason, sender.getName(), time);
             } catch (CannotFindUUIDException e) {
                 sender.sendMessage(Utils.colorCodes("&cCouldn't fetch the uuid of " + name + " please wait 1 minute"));
                 return;
